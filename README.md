@@ -14,4 +14,4 @@ Um blog de tecnologia e eletrônica que agrupará vários tutoriais de programa�
 
 NOTE: Site com o tutorial completo: https://vegibit.com/node-js-blog-tutorial/ 
 
-* OBS: Parei logo após onde está escrito "It’s Working!"
+* OBS: Parei logo após onde está escrito "Setting up POST requests in Express"
