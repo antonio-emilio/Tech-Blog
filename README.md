@@ -11,3 +11,7 @@ Um blog de tecnologia e eletrônica que agrupará vários tutoriais de programa�
 * Bootstrap
 * Express
 * Nodemon
+
+NOTE: Site com o tutorial completo: https://vegibit.com/node-js-blog-tutorial/ 
+
+* OBS: Parei logo após onde está escrito "It’s Working!"
