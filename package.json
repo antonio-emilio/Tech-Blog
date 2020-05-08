@@ -1,0 +1,19 @@
+{
+  "name": "techblog",
+  "version": "1.0.0",
+  "description": "Criação de um blog de tecnologia e projetos de embarcados e tutoriais de programação e eletrônica.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Antonio e Melyssa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3",
+    "startbootstrap-clean-blog": "^5.0.8"
+  }
+}
