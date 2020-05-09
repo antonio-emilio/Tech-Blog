@@ -3,19 +3,33 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
- 
+const expressSession = require('express-session'); 
+const connectMongo = require('connect-mongo');
+
 const createPostController = require('./controllers/createPost');
 const homePageController = require('./controllers/homePage');
 const storePostController = require('./controllers/storePost');
 const getPostController = require('./controllers/getPost');
 const createUserController = require("./controllers/createUser");
 const storeUserController = require('./controllers/storeUser');
+const loginController = require("./controllers/login");
+const loginUserController = require('./controllers/loginUser');
 const app = new express();
- 
+
 mongoose.connect('mongodb+srv://antonio:ef9rYhyMftWx06q6@cluster0-awgkb.gcp.mongodb.net/techblog?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass%20Community&retryWrites=true&ssl=true', { useNewUrlParser: true })
     .then(() => 'You are now connected to Mongo!')
     .catch(err => console.error('Something went wrong', err))
 
+const mongoStore = connectMongo(expressSession);
+ 
+app.use(expressSession({
+    secret: 'secret',
+    store: new mongoStore({
+        mongooseConnection: mongoose.connection
+     })
+ }));
+     
+    
 app.use(fileUpload());
 app.use(express.static('public'));
 app.use(expressEdge.engine);
@@ -28,12 +42,15 @@ app.use(bodyParser.urlencoded({
 
 const storePost = require('./middleware/storePost')
 app.get("/", homePageController);
-app.use('/postsimage', storePost)
+app.use('/postsimage', storePost);
+app.get('/login', loginController);
+app.post('/usersLogin', loginUserController);
 app.get("/createUser", createUserController);
 app.get("/createPost", createPostController);
 app.get("/:id", getPostController);
 app.post("/postsimage", storePostController);
 app.post("/usersReg", storeUserController);
+
 
 app.listen(4000, () => {
     console.log('App listening on port 4000')
