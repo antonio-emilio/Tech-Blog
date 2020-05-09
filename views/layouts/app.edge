@@ -37,15 +37,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
+          @if(auth)
           <li class="nav-item">
             <a class="nav-link" href="/createPost">Sample Post</a>
           </li>
+          @else
           <li class="nav-item">
             <a class="nav-link" href="/createUser">Create User</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          @endif
         </ul>
       </div>
     </div>

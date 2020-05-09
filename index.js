@@ -1,10 +1,15 @@
 const expressEdge = require("express-edge");
 const express = require("express");
+const edge = require("edge.js");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const expressSession = require('express-session'); 
 const connectMongo = require('connect-mongo');
+const auth = require("./middleware/auth");
+const redirectIfAuthenticated = require('./middleware/redirectIfAuthenticated')
+const connectFlash = require("connect-flash");
+const storePost = require('./middleware/storePost')
 
 const createPostController = require('./controllers/createPost');
 const homePageController = require('./controllers/homePage');
@@ -29,7 +34,7 @@ app.use(expressSession({
      })
  }));
      
-    
+app.use(connectFlash());    
 app.use(fileUpload());
 app.use(express.static('public'));
 app.use(expressEdge.engine);
@@ -40,16 +45,21 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-const storePost = require('./middleware/storePost')
+app.use('*', (req, res, next) => {
+    edge.global('auth', req.session.userId)
+    next()
+});
+
 app.get("/", homePageController);
+app.get("/createPost", createPostController);
 app.use('/postsimage', storePost);
 app.get('/login', loginController);
 app.post('/usersLogin', loginUserController);
 app.get("/createUser", createUserController);
-app.get("/createPost", createPostController);
 app.get("/:id", getPostController);
 app.post("/postsimage", storePostController);
 app.post("/usersReg", storeUserController);
+app.get("/new", createPostController);
 
 
 app.listen(4000, () => {
