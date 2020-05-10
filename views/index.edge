@@ -8,8 +8,8 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h1>Clean Blog</h1>
-          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          <h1>TechBLOG</h1>
+          <span class="subheading">Seu portal de IOT e embarcados.</span>
         </div>
       </div>
     </div>
@@ -27,16 +27,19 @@
               {{ post.title }}
             </h2>
           </a>
-          <p class="post-meta">Posted by
+          
+            <a href="#" style="font-size: 18  px;">{{ post.description }}</a>
+
+          <p class="post-meta">Postado por
             <a href="#">{{ post.username }}</a>
-            on {{ post.createdAt.toDateString() }}
+            em {{ post.createdAt.toDateString() }}
           </p>
         </div>
         <hr>
       @endeach
       <!-- Pager -->
       <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <a class="btn btn-primary float-right" href="#">Mais antigos &rarr;</a>
       </div>
     </div>
   </div>
