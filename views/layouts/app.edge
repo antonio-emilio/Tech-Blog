@@ -37,6 +37,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
           </li>
+          
           @if(auth)
           <li class="nav-item">
             <a class="nav-link" href="/createPost">Criar Postagem</a>
@@ -49,6 +50,13 @@
             <a class="nav-link" href="/login">Login</a>
           </li>
           @endif
+          <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0" action="https://www.google.com/search" class="form-inline">
+                    <input class="form-control mr-sm-2" name="q" type="search" placeholder="Digite aqui!" aria-label="Pesquisar">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
+                    <input name="sourceid" type="hidden" value="techblog" /><input name="sitesearch" type="hidden" value="techblog.com" />
+                </form>
+                  </li>
         </ul>
       </div>
     </div>
