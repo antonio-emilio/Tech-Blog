@@ -27,6 +27,10 @@ mongoose.connect('mongodb+srv://antonio:ef9rYhyMftWx06q6@cluster0-awgkb.gcp.mong
 
 const mongoStore = connectMongo(expressSession);
  
+var favicon = require('serve-favicon');
+
+app.use(favicon(__dirname + '/public/img/favicon.png'));
+
 app.use(expressSession({
     secret: 'secret',
     store: new mongoStore({
